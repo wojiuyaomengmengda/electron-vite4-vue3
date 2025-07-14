@@ -1,0 +1,10 @@
+.container {
+    width: 100%;
+    @include flex-center;
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
