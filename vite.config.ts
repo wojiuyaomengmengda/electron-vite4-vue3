@@ -15,5 +15,11 @@ export default defineConfig({
   server: {
       // 端口
       port: 3000,
-  }
+  },
+  resolve: {
+    // 别名配置
+    alias: {
+      '@': '/src',
+    }
+  },
 })
