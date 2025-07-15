@@ -116,7 +116,7 @@ function monitoringIpcEvents() {
 
   ipcMain.on('annotation:screen-share-started', (event, params) => {
     const { screenX, screenY } = caculateScreenPosition(params.x, params.y);
-    let selectedScreen;
+    let selectedScreen: any;
     screen.getAllDisplays().forEach(item => {
       if (
         Math.abs(screenX - item.workArea.x * item.scaleFactor) <

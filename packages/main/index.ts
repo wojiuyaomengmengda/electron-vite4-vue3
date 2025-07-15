@@ -11,8 +11,8 @@ import { release } from 'os';
 import { join, resolve } from 'path';
 import { initWhiteboardWindow } from './whiteboard';
 import { initAnnotationWindow } from './annotation';
-
-// Enable crash capture
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
+// 向服务端发送崩溃报告
 crashReporter.start({
   productName: 'electron-tui-room',
   companyName: 'Tencent Cloud',
@@ -47,7 +47,7 @@ if (!app.requestSingleInstanceLock()) {
   app.quit();
   process.exit(0);
 }
-process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true';
+
 
 let isHasScreen = false;
 async function checkAndApplyDevicePrivilege() {
@@ -64,7 +64,7 @@ async function checkAndApplyDevicePrivilege() {
   }
 
   const screenPrivilege = systemPreferences.getMediaAccessStatus('screen');
-  console.log(screenPrivilege);
+  console.log('screenPrivilege', screenPrivilege);
   if (screenPrivilege === 'granted') {
     isHasScreen = true;
   }
@@ -109,10 +109,19 @@ async function createWindow() {
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
   mainWin = new BrowserWindow({
     title: 'Main window',
-    width,
-    height,
+    // width,
+    // height,
+    // minWidth: 1200,
+    // minHeight: 640,
+    width: 800,
+    height: 600,
     minWidth: 1200,
     minHeight: 640,
+    frame: true, // 去掉窗口边框 // 取消默认的头部；自定义头部
+    autoHideMenuBar: true, // 隐藏菜单栏
+    simpleFullscreen: true,
+    minimizable: false, // 可否最小化
+    maximizable: false, // 可否最大化
     webPreferences: {
       preload: join(__dirname, '../preload/index.cjs'),
       nodeIntegration: true,

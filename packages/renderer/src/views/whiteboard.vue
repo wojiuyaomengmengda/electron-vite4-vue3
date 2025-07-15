@@ -1,7 +1,13 @@
 <template>
-  <WhiteboardView />
+    <div>
+        白板页面
+    </div>
 </template>
 
-<script setup lang="ts">
-import { WhiteboardView } from '@tencentcloud/roomkit-electron-vue3';
+<script setup>
+
 </script>
+
+<style lang="scss" scoped>
+
+</style>
