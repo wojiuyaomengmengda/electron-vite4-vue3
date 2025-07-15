@@ -11,11 +11,14 @@
     "electron:build": "vite build && electron-builder"
   },
   "dependencies": {
-    "pinia": "^3.0.3",
+    "pinia": "^2.1.7",
+    "pinia-plugin-persistedstate": "^3.2.1",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1",
     "element-plus": "2.9.1",
-    "animate.css": "^4.1.1"
+    "animate.css": "^4.1.1",
+    "vue-i18n": "9.10.2",
+    "web-storage-cache": "^1.1.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.0",

@@ -1,23 +1,26 @@
 <script setup lang="ts">
+import { useDesign, variables } from '@/hooks/web/useDesign'
 // import HelloWorld from './components/HelloWorld.vue'
 import Login from './views/Login/Login.vue'
+import { ref } from 'vue'
+
+defineOptions({ name: 'APP' })
+const { getPrefixCls } = useDesign()
+const prefixCls = getPrefixCls('app')
+const greyMode = ref(false)
 </script>
 
 <template>
-  <Login></Login>
+  <div :class="greyMode ? `${prefixCls}-grey-mode` : ''" class="relative PageMain">
+    <Login></Login>
+  </div>
 </template>
 
 <style scoped lang="scss">
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.PageMain {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: auto;
 }
 </style>

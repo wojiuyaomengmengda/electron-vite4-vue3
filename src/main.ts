@@ -1,5 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+
+// 初始化多语言
+import { setupI18n } from '@/plugins/vueI18n'
 // import pinia from './store'
 // 引入 element-plus
 import { setupElementPlus } from '@/plugins/elementPlus'
@@ -13,6 +16,7 @@ import Logger from '@/utils/Logger'
 // 创建实例
 const setupAll = async () => {
   const app = createApp(App)
+  await setupI18n(app)
   setupElementPlus(app)
   app.mount('#app')
 }
